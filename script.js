@@ -3,7 +3,7 @@ import './style.css'
 // const h1 = <h1>Hello World</h1>
 
 function Card(key , title , thumbnail , price , brand) {
-    console.log(key);
+    // console.log(key);
 
     return (
         <div className='card' key={key}>
@@ -40,15 +40,19 @@ fetch('https://dummyjson.com/products')
 .then(res => res.json())
 .then((data)=>{
     console.log(data)
-    const container2 = data.products.map((product)=>{
-        return Card(product.id , product.title , product.thumbnail , product.price , product.brand)
+    // console.log(container2);
+    root.render(<div className='container'>
+        { data.products.map((product)=>{
+        return Card(
+            product.id ,
+            product.title ,
+            product.thumbnail ,
+            product.price ,
+            product.brand
+        )
         
-    })
-    console.log(container2);
-    root.render(<div className='container'>{container2}</div>)
-
-    
-    
+    })}
+    </div>)    
 });
 
 
